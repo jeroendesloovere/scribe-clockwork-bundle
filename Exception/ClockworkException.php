@@ -20,12 +20,12 @@ class ClockworkException extends \RuntimeException implements \Serializable
      */
     public function serialize()
     {
-        return serialize([
+        return serialize(array(
             $this->code,
             $this->message,
             $this->file,
             $this->line,
-        ]);
+        ));
     }
 
     /**

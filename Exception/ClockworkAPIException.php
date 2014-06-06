@@ -42,14 +42,14 @@ class ClockworkAPIException extends ClockworkException
      */
     public function serialize()
     {
-        return serialize([
+        return serialize(array(
             $this->code,
             $this->message,
             $this->file,
             $this->line,
             $this->error_number,
             $this->error_message,
-        ]);
+        ));
     }
 
     /**

@@ -50,7 +50,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
                 ->enumNode('invalid_character_action')
                     ->defaultValue('replace_character')
-                    ->values(['throw_error', 'remove_character', 'replace_character'])
+                    ->values(array('throw_error', 'remove_character', 'replace_character'))
                     ->info('Action to take if invalid characters are used within the SMS')
                 ->end()
                 ->booleanNode('log_activity')

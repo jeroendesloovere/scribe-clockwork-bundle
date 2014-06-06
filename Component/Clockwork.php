@@ -91,7 +91,7 @@ class Clockwork implements ContainerAwareInterface
     public function __construct(ContainerInterface $container = null)
     {
         $this->setContainer($container);
-        
+
         $this->api_key                  = $container->getParameter('scribe_clockwork.api_key');
         $this->allow_long_messages      = $container->getParameter('scribe_clockwork.allow_long_messages');
         $this->truncate_long_messages   = $container->getParameter('scribe_clockwork.truncate_long_messages');
@@ -122,7 +122,7 @@ class Clockwork implements ContainerAwareInterface
      */
     public function sendMultiple(array $messages = null)
     {
-        $returns = [];
+        $returns = array();
 
         foreach ($messages as $phone => $message) {
             $returns[] = $this->send($phone, $message);
@@ -312,11 +312,11 @@ class Clockwork implements ContainerAwareInterface
             }
         }
 
-        return [
+        return array (
             $balance,
             $symbol,
             $code
-        ];
+        );
     }
 
     /**
@@ -339,7 +339,7 @@ class Clockwork implements ContainerAwareInterface
 
         curl_setopt($handle, CURLOPT_POST,           1);
         curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($handle, CURLOPT_HTTPHEADER,     ["Content-Type: text/xml"]);
+        curl_setopt($handle, CURLOPT_HTTPHEADER,     array("Content-Type: text/xml"));
         curl_setopt($handle, CURLOPT_USERAGENT,      'ScribeClockworkBundle/1.0.2');
         curl_setopt($handle, CURLOPT_POSTFIELDS,     $data);
 
@@ -360,11 +360,11 @@ class Clockwork implements ContainerAwareInterface
             = $this->documentParseError($response)
         ;
 
-        return [
+        return array(
             $response,
             $error_number,
             $error_message
-        ];
+        );
     }
 
     /**
@@ -385,10 +385,10 @@ class Clockwork implements ContainerAwareInterface
                 break;
         }
 
-        return [
+        return array(
             $error_number,
             $error_message
-        ];
+        );
     }
 
     /**
@@ -404,10 +404,10 @@ class Clockwork implements ContainerAwareInterface
             list($error_number, $error_message) = $this->parseError($child);
         }
 
-        return [
+        return array(
             $error_number,
             $error_message
-        ];
+        );
     }
 
     /**
@@ -423,10 +423,10 @@ class Clockwork implements ContainerAwareInterface
             list($error_number, $error_message) = $this->parseError($child);
         }
 
-        return [
+        return array(
             $error_number,
             $error_message
-        ];
+        );
     }
 
     /**
